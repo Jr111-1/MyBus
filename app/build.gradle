@@ -4,6 +4,9 @@ plugins {
 
 android {
     compileSdk 31
+    buildFeatures{
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId "com.example.mybus"
@@ -35,5 +38,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.1'
+    implementation 'org.bouncycastle:bcprov-jdk15to18:1.68'
+    implementation "org.projectlombok:lombok:1.18.16"
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
 }
