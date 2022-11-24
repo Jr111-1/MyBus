@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mybus.databinding.ActivityMainBinding;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,6 +24,7 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,80 +34,62 @@ import okhttp3.ResponseBody;
 
 
 public class MainActivity extends AppCompatActivity {
+    public static final String LoginUrl = "http://192.168.111.1:8082/api/user";
 
     private Button login;
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private TextView textView;
     private EditText email;
     private EditText password;
     private ActivityMainBinding binding;
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
-    private int signInId = 0;
-    private final Handler handler = new Handler(Looper.getMainLooper());
-    private static final MediaType mediaType = MediaType.parse("application/json;charset=utf-8");
-    private final Message message = new Message();
+//    private int signInId = 0;
+//    private final Handler handler = new Handler(Looper.getMainLooper());
+//    private static final MediaType mediaType = MediaType.parse("application/json;charset=utf-8");
+//    private final Message message = new Message();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
+        initView();
+        initEvent();
 
-        login = (Button) findViewById(R.id.login);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password) ;
+    }
+
+    private void initEvent() {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            try{
-                String emails = binding.email.getText().toString();
-                String passWord = binding.password.getText().toString();
-                Request request = new Request.Builder().url(NetWorkSettings.SIGN_IN_UP).post(
-                        RequestBody.create(mapper.writeValueAsString(new User(emails, passWord)), mediaType)
-                ).build();
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        message.what = ResponseCode.REQUEST_FAILED;
-                        handler.post(() -> Utils.showMessage(getApplicationContext(), message));
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                        if (response.isSuccessful()) {
-                            ResponseBody body = response.body();
-                            if (body != null) {
-                                RestResponse restResponse = mapper.readValue(body.string(), RestResponse.class);
-                                message.what = restResponse.getCode();
-                                if (message.what == ResponseCode.SIGN_IN_SUCCESS) {
-                                    handler.post(() -> {
-                                        signInId = (int) restResponse.getData();
-                                        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                                        startActivity(intent);
-                                    });
-                                } else {
-                                    message.what = ResponseCode.REQUEST_FAILED;
-                                    Log.e("SERVER_ERROR", response.message());
+                new Thread(){
+                    public void run() {
+                        try {
+                            String context = Utils.getInstance().doGet("http://192.168.111.1:8082/api/test");
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textView.setText(context);
                                 }
-                            } else {
-                                message.what = ResponseCode.SERVER_ERROR;
-                                Log.e("SERVER_ERROR", response.message());
-                            }
-                            handler.post(() -> Utils.showMessage(getApplicationContext(), message));
-
+                            });
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
-                });
-            }catch (
-            JsonProcessingException e) {
-                message.what = ResponseCode.JSON_SERIALIZATION;
-                Utils.showMessage(getApplicationContext(),message);
-                e.printStackTrace();
-            }
+                }.start();
+
 
             }
         });
     }
+
+    private void initView() {
+        login = (Button) findViewById(R.id.login);
+        textView = (TextView) findViewById(R.id.tw_tw);
+//        email = (EditText) findViewById(R.id.email);
+//        password = (EditText) findViewById(R.id.password) ;
+    }
+
 
 
 }
