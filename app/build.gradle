@@ -43,5 +43,6 @@ dependencies {
     implementation 'org.bouncycastle:bcprov-jdk15to18:1.68'
     implementation "org.projectlombok:lombok:1.18.16"
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    implementation 'com.google.android.material:material:1.0.0'
 
 }

@@ -7,43 +7,26 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:text="邮箱"-->
-<!--            android:textSize="50dp"-->
-<!--            android:textAlignment="center"/>-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/email"-->
-<!--            android:layout_width="500dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:hint="请输入邮箱"-->
-<!--            android:textSize="50dp"/>-->
-<!--    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:text="密码"-->
-<!--            android:textSize="50dp"-->
-<!--            android:textAlignment="center"/>-->
+        <TextView
+            android:id="@+id/tw_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="请输入想要搜索的内容"
+            />
 
-<!--        <EditText-->
-<!--            android:id="@+id/password"-->
-<!--            android:layout_width="500dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:hint="请输入密码"-->
-<!--            android:textSize="50dp"/>-->
-<!--    </LinearLayout>-->
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="搜索"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/login"
@@ -59,6 +42,32 @@
         android:id="@+id/tw_tw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ListView
+            android:layout_weight="8"
+            android:id="@+id/listview_movie"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <Button
+            android:id="@+id/btn_menu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="4"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/button_shape"
+            android:textSize="20dp"
+            android:backgroundTint="@color/teal_200"
+            android:textAlignment="center"
+            android:text="+"/>
+    </FrameLayout>
+
 
 
 </LinearLayout>

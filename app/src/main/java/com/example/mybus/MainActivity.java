@@ -3,6 +3,7 @@ package com.example.mybus;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,14 +14,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mybus.databinding.ActivityMainBinding;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -37,8 +42,15 @@ public class MainActivity extends AppCompatActivity {
     public static final String LoginUrl = "http://192.168.111.1:8082/api/user";
 
     private Button login;
+    private Button menu;
     private Handler handler = new Handler(Looper.getMainLooper());
     private TextView textView;
+    private Context mContext;
+    private List<movies> moviesList = null;
+    private MovieAdapter movieAdapter = null;
+    private ListView listView_movie;
+
+
     private EditText email;
     private EditText password;
     private ActivityMainBinding binding;
@@ -56,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initEvent();
 
+    }
+    private void initView() {
+        login = (Button) findViewById(R.id.login);
+        textView = (TextView) findViewById(R.id.tw_tw);
+        mContext = MainActivity.this;
+        listView_movie = (ListView) findViewById(R.id.listview_movie);
+        moviesList = new LinkedList<movies>();
+        moviesList.add(new movies("金克斯","ipx111",R.drawable.jinx));
+        moviesList.add(new movies("自行车","ipx222",R.drawable.bike));
+        movieAdapter = new MovieAdapter((LinkedList<movies>)moviesList,mContext);
+        listView_movie.setAdapter(movieAdapter);
+        menu = (Button) findViewById(R.id.btn_menu);
+//        email = (EditText) findViewById(R.id.email);
+//        password = (EditText) findViewById(R.id.password) ;
     }
 
     private void initEvent() {
@@ -83,12 +109,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initView() {
-        login = (Button) findViewById(R.id.login);
-        textView = (TextView) findViewById(R.id.tw_tw);
-//        email = (EditText) findViewById(R.id.email);
-//        password = (EditText) findViewById(R.id.password) ;
-    }
+
 
 
 
