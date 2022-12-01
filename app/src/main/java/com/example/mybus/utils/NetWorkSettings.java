@@ -1,4 +1,4 @@
-package com.example.mybus;
+package com.example.mybus.utils;
 
 public class NetWorkSettings {
     private static final String HOST = "192.168.111.1";

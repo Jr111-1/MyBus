@@ -1,4 +1,4 @@
-package com.example.mybus;
+package com.example.mybus.bean;
 
 public class User {
     private String email;

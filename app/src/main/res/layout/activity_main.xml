@@ -66,6 +66,28 @@
             android:backgroundTint="@color/teal_200"
             android:textAlignment="center"
             android:text="+"/>
+        <Button
+            android:id="@+id/btn_category"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="4"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/button_shape"
+            android:textSize="10dp"
+            android:backgroundTint="@color/teal_200"
+            android:textAlignment="center"
+            android:text="类别"/>
+        <Button
+            android:id="@+id/btn_actor"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="4"
+            android:layout_marginTop="250dp"
+            android:background="@drawable/button_shape"
+            android:textSize="10dp"
+            android:backgroundTint="@color/teal_200"
+            android:textAlignment="center"
+            android:text="演员"/>
     </FrameLayout>
 
 

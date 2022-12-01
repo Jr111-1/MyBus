@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:id="@+id/tw_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="类别"
@@ -18,15 +19,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_category"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/listview_categoty"/>
+            android:layout_height="match_parent" />
+
 
 
 
     </LinearLayout>
+
+
 
 </LinearLayout>

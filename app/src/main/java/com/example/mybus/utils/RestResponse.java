@@ -1,4 +1,4 @@
-package com.example.mybus;
+package com.example.mybus.utils;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

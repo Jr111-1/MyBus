@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActorActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="演员信息"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:id="@+id/tw_actor_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageview_actor_title"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="姓名:"
+                android:id="@+id/tw_actor_name"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="年龄:"
+                android:id="@+id/tw_actor_age"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="cup:"
+                android:id="@+id/tw_actor_cup"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生日:"
+                android:id="@+id/tw_actor_birthday"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="身高:"
+                android:id="@+id/tw_actor_height"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="腰围:"
+                android:id="@+id/tw_actor_waist"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="臀围:"
+                android:id="@+id/tw_actor_hipline"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/textview_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="胸围:"
+                android:id="@+id/tw_actor_bust"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="参演影片"
+            android:textAlignment="center"
+            android:background="@drawable/textview_shape"/>
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listview_actor_movie"/>
+
+    </LinearLayout>
+
+</LinearLayout>

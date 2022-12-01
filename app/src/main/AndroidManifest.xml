@@ -14,6 +14,20 @@
         android:theme="@style/Theme.MyBus"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ActorListActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ActorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CategoryActivity"
             android:exported="false">
             <meta-data

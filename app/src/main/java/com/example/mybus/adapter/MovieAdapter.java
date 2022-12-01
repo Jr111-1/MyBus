@@ -1,4 +1,4 @@
-package com.example.mybus;
+package com.example.mybus.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mybus.R;
+import com.example.mybus.bean.movies;
 
 import java.util.List;
 

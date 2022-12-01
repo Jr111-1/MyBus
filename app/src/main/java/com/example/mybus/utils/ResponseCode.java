@@ -1,4 +1,4 @@
-package com.example.mybus;
+package com.example.mybus.utils;
 
 public class ResponseCode {
     public static final int SIGN_IN_SUCCESS = 200;

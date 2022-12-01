@@ -1,6 +1,5 @@
 package com.example.mybus;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,34 +7,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import android.service.autofill.OnClickAction;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.mybus.databinding.ActivityMainBinding;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.mybus.adapter.MovieAdapter;
+import com.example.mybus.bean.movies;
+import com.example.mybus.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,17 +29,19 @@ public class MainActivity extends AppCompatActivity {
 
     private Button login;
     private Button menu;
+    private Button btn_category;
+    private Button btn_actor;
     private Handler handler = new Handler(Looper.getMainLooper());
     private TextView textView;
     private Context mContext;
     private List<movies> moviesList = null;
     private MovieAdapter movieAdapter = null;
     private ListView listView_movie;
+    private int flag = 0;
 
 
     private EditText email;
     private EditText password;
-    private ActivityMainBinding binding;
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
 //    private int signInId = 0;
@@ -80,11 +68,16 @@ public class MainActivity extends AppCompatActivity {
         movieAdapter = new MovieAdapter((LinkedList<movies>)moviesList,mContext);
         listView_movie.setAdapter(movieAdapter);
         menu = (Button) findViewById(R.id.btn_menu);
+        btn_category = (Button) findViewById(R.id.btn_category);
+        btn_actor = (Button) findViewById(R.id.btn_actor);
 //        email = (EditText) findViewById(R.id.email);
 //        password = (EditText) findViewById(R.id.password) ;
     }
 
     private void initEvent() {
+
+        btn_actor.setVisibility(View.INVISIBLE);
+        btn_category.setVisibility(View.INVISIBLE);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +98,42 @@ public class MainActivity extends AppCompatActivity {
                 }.start();
 
 
+            }
+        });
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(flag == 0){
+                    btn_category.setVisibility(View.VISIBLE);
+                    btn_actor.setVisibility(View.VISIBLE);
+                    flag = 1;
+                }
+                else{
+                    btn_actor.setVisibility(View.INVISIBLE);
+                    btn_category.setVisibility(View.INVISIBLE);
+                    flag = 0;
+
+                }
+
+            }
+        });
+
+        btn_category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_actor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,ActorListActivity.class);
+                startActivity(intent);
             }
         });
     }
