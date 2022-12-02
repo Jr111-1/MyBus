@@ -8,13 +8,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mybus.adapter.MovieAdapter;
-import com.example.mybus.bean.movies;
+import com.example.mybus.bean.Movies;
 import com.example.mybus.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler(Looper.getMainLooper());
     private TextView textView;
     private Context mContext;
-    private List<movies> moviesList = null;
+    private List<Movies> moviesList = null;
     private MovieAdapter movieAdapter = null;
     private ListView listView_movie;
     private int flag = 0;
@@ -61,12 +62,21 @@ public class MainActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.login);
         textView = (TextView) findViewById(R.id.tw_tw);
         mContext = MainActivity.this;
+
+
         listView_movie = (ListView) findViewById(R.id.listview_movie);
-        moviesList = new LinkedList<movies>();
-        moviesList.add(new movies("金克斯","ipx111",R.drawable.jinx));
-        moviesList.add(new movies("自行车","ipx222",R.drawable.bike));
-        movieAdapter = new MovieAdapter((LinkedList<movies>)moviesList,mContext);
+        moviesList = new LinkedList<Movies>();
+
+        for(int i = 0; i < 30; i++){
+            Movies movies = new Movies("movies"+i, "ipx"+i, R.drawable.jinx,"actor"+i,"分类"+i,"出版社"+i,"制作商"+i,"发行日期"+i,"时长"+i,"系列"+i);
+            moviesList.add(movies);
+        }
+//        moviesList.add(new Movies("金克斯","ipx111",R.drawable.jinx));
+//        moviesList.add(new Movies("自行车","ipx222",R.drawable.bike));
+        movieAdapter = new MovieAdapter((LinkedList<Movies>)moviesList,mContext);
         listView_movie.setAdapter(movieAdapter);
+
+
         menu = (Button) findViewById(R.id.btn_menu);
         btn_category = (Button) findViewById(R.id.btn_category);
         btn_actor = (Button) findViewById(R.id.btn_actor);
@@ -134,6 +144,20 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,ActorListActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        listView_movie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Movies movies = moviesList.get(i);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("movies",movies);
+                Intent intent = new Intent(MainActivity.this,MovieActivity.class);
+                intent.putExtra("movies",movies);
+                startActivity(intent);
+
             }
         });
     }

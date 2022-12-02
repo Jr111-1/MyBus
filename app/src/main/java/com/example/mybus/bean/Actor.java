@@ -1,6 +1,10 @@
 package com.example.mybus.bean;
 
-public class Actor {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Actor implements Serializable {
 
     public int picture_actor;
     public String ActorName;
@@ -11,13 +15,14 @@ public class Actor {
     public String waist;
     public String hipline;
     public String bust;
+    public List<Movies> actorMovieList = new ArrayList<Movies>();
 
     public Actor(int picture_actor, String actorName) {
         this.picture_actor = picture_actor;
         this.ActorName = actorName;
     }
 
-    public Actor(int picture_actor, String actorName, String age, String birthday, String cup, String height, String waist, String hipline, String bust) {
+    public Actor(int picture_actor, String actorName, String age, String birthday, String cup, String height, String waist, String hipline, String bust, List<Movies> actorMovieList) {
         this.picture_actor = picture_actor;
         ActorName = actorName;
         this.age = age;
@@ -27,6 +32,15 @@ public class Actor {
         this.waist = waist;
         this.hipline = hipline;
         this.bust = bust;
+        this.actorMovieList = actorMovieList;
+    }
+
+    public List<Movies> getActorMovieList() {
+        return actorMovieList;
+    }
+
+    public void setActorMovieList(List<Movies> actorMovieList) {
+        this.actorMovieList = actorMovieList;
     }
 
     public int getPicture_actor() {

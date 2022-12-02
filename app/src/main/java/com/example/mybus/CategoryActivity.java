@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.mybus.bean.Category;
+import com.example.mybus.bean.Movies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +32,20 @@ public class CategoryActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.tw_category);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_category);
-        for(int i = 0; i<50; i++){
+
+        //模拟数据的传输
+        for(int j = 0; j<50; j++){
             Category category = new Category();
-            category.CategotyName = "类别" + i;
+            category.CategotyName = "类别" + j;
+            for(int i = 0; i < 30; i++){
+                Movies movies = new Movies("movies"+i, "ipx"+i, R.drawable.jinx,"actor"+i,"分类"+i,"出版社"+i,"制作商"+i,"发行日期"+i,"时长"+i,"系列"+i);
+                category.category_movieList.add(movies);
+            }
             categoryList.add(category);
 
         }
+
+
         CategoryAdapter categoryAdapter = new CategoryAdapter();
         recyclerView.setAdapter(categoryAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(CategoryActivity.this,3);
@@ -72,6 +82,16 @@ public class CategoryActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
             Category category = categoryList.get(position);
             holder.categoryName.setText(category.getCategotyName());
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.setClass(CategoryActivity.this,MovieListActivity.class);
+                    intent.putExtra("category",category);
+                    startActivity(intent);
+                }
+            });
         }
 
         @Override

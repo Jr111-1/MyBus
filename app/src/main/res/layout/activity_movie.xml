@@ -20,7 +20,7 @@
 
         <ImageView
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:id="@+id/image_movie"/>
         <LinearLayout
@@ -34,9 +34,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="片名:"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:background="@drawable/textview_shape"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:id="@+id/movie_activity_movie_noid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
                 android:text="番号:"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/movie_activity_movie_actor"
@@ -51,6 +54,7 @@
                 android:textSize="20dp"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/movie_activity_movie_categories"
@@ -58,6 +62,7 @@
                 android:textSize="20dp"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="发行商:"
@@ -65,6 +70,7 @@
                 android:id="@+id/movie_activity_movie_publisher"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="制作商:"
@@ -72,6 +78,7 @@
                 android:id="@+id/movie_activity_movie_producer"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="发行日期:"
@@ -79,6 +86,7 @@
                 android:id="@+id/movie_activity_movie_date"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="时长:"
@@ -86,6 +94,7 @@
                 android:id="@+id/movie_activity_movie_duration"/>
 
             <TextView
+                android:background="@drawable/textview_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="系列:"
@@ -97,7 +106,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="磁力链接"
+            android:textAlignment="center"
+            android:background="@drawable/textview_shape"/>
 
         <ListView
             android:layout_width="match_parent"
@@ -109,7 +126,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="预览图片"
+            android:textAlignment="center"
+            android:background="@drawable/textview_shape"/>
 
         <ListView
             android:layout_width="match_parent"

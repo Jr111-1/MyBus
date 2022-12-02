@@ -9,25 +9,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mybus.R;
-import com.example.mybus.bean.movies;
+import com.example.mybus.bean.Movies;
 
 import java.util.List;
 
 public class MovieAdapter extends BaseAdapter {
 
-    private List<movies> moviesList;
+    private List<Movies> moviesList;
     private Context mContext;
 
-    public MovieAdapter(List<movies> moviesList,Context mContext){
+    public MovieAdapter(List<Movies> moviesList, Context mContext){
         this.moviesList = moviesList;
         this.mContext = mContext;
 
     }
 
-    public void setMovies(List<movies> moviesList){
+    public void setMovies(List<Movies> moviesList){
         this.moviesList = moviesList;
     }
-    public List<movies> getMoviesList(){
+    public List<Movies> getMoviesList(){
         return moviesList;
     }
 
@@ -53,6 +53,8 @@ public class MovieAdapter extends BaseAdapter {
         TextView txt_movie_name = (TextView) view.findViewById(R.id.movie_name);
         TextView txt_movie_noId = (TextView) view.findViewById(R.id.no_id);
         img_movie.setBackgroundResource(moviesList.get(i).getImage());
+        txt_movie_name.setText(moviesList.get(i).getMovie_name());
+        txt_movie_noId.setText(moviesList.get(i).getNoId());
         return view;
     }
 }
