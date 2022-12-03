@@ -32,6 +32,8 @@ public class ActorListActivity extends AppCompatActivity {
 
         recyclerView_actor = (RecyclerView) findViewById(R.id.recyclerview_actor);
 
+
+        //模拟数据的传输
         for(int i = 0; i < 50; i++){
             int a = R.drawable.jinx;
             String s = "演员" + i;
@@ -51,6 +53,7 @@ public class ActorListActivity extends AppCompatActivity {
             actorList.add(actor);
         }
 
+        //为recyclerView添加适配器
         ActorAdapter actorAdapter = new ActorAdapter();
         recyclerView_actor.setAdapter(actorAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(ActorListActivity.this,2);

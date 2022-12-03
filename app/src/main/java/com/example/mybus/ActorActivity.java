@@ -49,7 +49,7 @@ public class ActorActivity extends AppCompatActivity {
         textView_hipline = (TextView) findViewById(R.id.tw_actor_hipline);
         textView_bust = (TextView) findViewById(R.id.tw_actor_bust);
 
-
+        //接收数据并且将数据填充到布局控件中
         Actor actor = (Actor) getIntent().getSerializableExtra("actor");
         picture_actor_title.setBackgroundResource(actor.getPicture_actor());
 
@@ -62,6 +62,8 @@ public class ActorActivity extends AppCompatActivity {
         textView_hipline.setText(actor.getHipline());
         textView_bust.setText(actor.getBust());
 
+
+        //为listview添加适配器
         mContext = ActorActivity.this;
         listView_actor_movie = (ListView) findViewById(R.id.listview_actor_movie);
         moviesList = actor.getActorMovieList();
@@ -72,6 +74,7 @@ public class ActorActivity extends AppCompatActivity {
 
     public void initEvent(){
 
+        //给适配器中的item添加点击实践
         listView_actor_movie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

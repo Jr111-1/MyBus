@@ -55,6 +55,7 @@ public class MovieListActivity extends AppCompatActivity {
     }
 
     public void initEvent(){
+        //给listview中的item添加点击事件并传输数据
         listView_movie_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

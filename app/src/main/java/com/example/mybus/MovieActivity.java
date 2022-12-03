@@ -40,8 +40,10 @@ public class MovieActivity extends AppCompatActivity {
         listView_magnetic = (ListView) findViewById(R.id.movie_activity_listview_magnetic);
         listView_picture_movie = (ListView) findViewById(R.id.movie_activity_listview_pictures);
 
+        //通过intent接收数据
         Movies movies = (Movies) getIntent().getSerializableExtra("movies");
 
+        //将接收到的数据填充到布局控件中
         imageView_movie_title.setBackgroundResource(movies.getImage());
         textView_movie_name.setText(movies.getMovie_name());
         textView_movie_noid.setText(movies.getNoId());

@@ -45,27 +45,28 @@ public class CategoryActivity extends AppCompatActivity {
 
         }
 
-
+        //为recyclerview添加适配器
         CategoryAdapter categoryAdapter = new CategoryAdapter();
         recyclerView.setAdapter(categoryAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(CategoryActivity.this,3);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(gridLayoutManager);//表格布局
         DividerItemDecoration mDivider = new
                 DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(mDivider);
 
     }
 
-
+    //定义viewHolder
     class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView categoryName;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryName = itemView.findViewById(R.id.category_item_id);
+            categoryName = itemView.findViewById(R.id.category_item_id);//为recyclerView绑定item中的控件
         }
     }
 
+    //定义recyclerView的适配器
     class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
 
         @NonNull
@@ -83,6 +84,7 @@ public class CategoryActivity extends AppCompatActivity {
             Category category = categoryList.get(position);
             holder.categoryName.setText(category.getCategotyName());
 
+            //为item添加点击事件并传输数据
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

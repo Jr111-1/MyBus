@@ -35,14 +35,18 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler(Looper.getMainLooper());
     private TextView textView;
     private Context mContext;
+
+    //电影列表
     private List<Movies> moviesList = null;
     private MovieAdapter movieAdapter = null;
     private ListView listView_movie;
-    private int flag = 0;
+    private int flag = 0;//用来隐藏按钮的标志
 
 
     private EditText email;
     private EditText password;
+
+    //连接后端获取数据
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
 //    private int signInId = 0;
@@ -66,13 +70,15 @@ public class MainActivity extends AppCompatActivity {
 
         listView_movie = (ListView) findViewById(R.id.listview_movie);
         moviesList = new LinkedList<Movies>();
-
+        //自动生成数据，模拟数据
         for(int i = 0; i < 30; i++){
             Movies movies = new Movies("movies"+i, "ipx"+i, R.drawable.jinx,"actor"+i,"分类"+i,"出版社"+i,"制作商"+i,"发行日期"+i,"时长"+i,"系列"+i);
             moviesList.add(movies);
         }
 //        moviesList.add(new Movies("金克斯","ipx111",R.drawable.jinx));
 //        moviesList.add(new Movies("自行车","ipx222",R.drawable.bike));
+
+        //为listview添加适配器
         movieAdapter = new MovieAdapter((LinkedList<Movies>)moviesList,mContext);
         listView_movie.setAdapter(movieAdapter);
 
@@ -111,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //点击展开按钮
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,16 +135,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        //类别按钮
         btn_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //实现页面转跳
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,CategoryActivity.class);
                 startActivity(intent);
             }
         });
-
+        //转跳到演员列表
         btn_actor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //为listview的item添加点击事件，使用putExtra方法，传输数据到另一个activity
         listView_movie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
